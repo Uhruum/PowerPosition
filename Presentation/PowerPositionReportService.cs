@@ -24,7 +24,7 @@ namespace Presentation
         protected override void OnStart(string[] args)
         {
             _timer.Elapsed += new ElapsedEventHandler(OnTimerTick);
-            _timer.Interval = Convert.ToDouble(ConfigurationManager.AppSettings["RuntimeFrequency"]);
+            _timer.Interval = Convert.ToDouble(ConfigurationManager.AppSettings["RuntimeFrequencyInMin"]) * 60000;
             _timer.Enabled = true;
             _reportService.GenerateReport(_pathToCsvFolder);
         }

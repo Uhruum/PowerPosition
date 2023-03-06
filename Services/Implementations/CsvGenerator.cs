@@ -11,7 +11,7 @@ namespace Services.Implementations
 {
     public class CsvGenerator : ICsvGenerator
     {
-        public bool Generate(IEnumerable<TradeItem> items, string path)
+        public void Generate(IEnumerable<TradeItem> items, string path)
         {
             string fileName = $"PowerPosition_{DateTime.Now:yyyyMMdd_HHmm}.csv";
             try
@@ -24,12 +24,11 @@ namespace Services.Implementations
                 {
                     csv.WriteRecords(items);
                 }
-
-                return true;
             }
             catch (Exception e)
             {
-                throw new CsvGeneratorGeneralException($"General error occurred when generating csv report with name {fileName}", e);
+                throw new CsvGeneratorGeneralException(
+                    $"General error occurred when generating csv report with name {fileName}", e);
             }
         }
     }

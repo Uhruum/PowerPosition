@@ -5,6 +5,6 @@ namespace Services.Abstractions
 {
     public interface ICsvGenerator
     {
-        bool Generate(IEnumerable<TradeItem> items, string path);
+        void Generate(IEnumerable<TradeItem> items, string path);
     }
 }
