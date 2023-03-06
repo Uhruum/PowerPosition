@@ -2,6 +2,6 @@
 {
     public interface IReportService
     {
-        void GenerateReport();
+        void GenerateReport(string pathToCsvFolder);
     }
 }

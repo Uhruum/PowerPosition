@@ -50,7 +50,7 @@ namespace Tests
             IReportService service = new ReportService(new PowerService(), new PowerTradeConverter(),
                 new TradeItemConverter(new PeriodMapper(new PeriodMapperCollectionGenerator())), new CsvGenerator());
 
-            service.GenerateReport();
+            service.GenerateReport("E:/Reports");
         }
     }
 }

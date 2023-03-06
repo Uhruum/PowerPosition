@@ -16,6 +16,9 @@ namespace Services.Implementations
             string fileName = $"PowerPosition_{DateTime.Now:yyyyMMdd_HHmm}.csv";
             try
             {
+                if (!Directory.Exists(path))
+                    Directory.CreateDirectory(path);
+
                 using (var writer = new StreamWriter(Path.Combine(path, fileName)))
                 using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
                 {

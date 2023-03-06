@@ -21,13 +21,13 @@ namespace Services.Implementations
             _csvGenerator = csvGenerator;
         }
 
-        public void GenerateReport()
+        public void GenerateReport(string pathToCsvFolder)
         {
             IEnumerable<TradeItem> tradeItems = _tradeItemConverter.Convert(
                 _powerTradeConverter.ConvertToDictionary(
                     _powerService.GetTrades(DateTime.Now))
                 );
-            _csvGenerator.Generate(tradeItems, @"E:\WoW_Logs");
+            _csvGenerator.Generate(tradeItems, pathToCsvFolder);
         }
     }
 }

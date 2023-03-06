@@ -1,4 +1,6 @@
-﻿using System.ServiceProcess;
+﻿using System;
+using System.Configuration;
+using System.ServiceProcess;
 using System.Timers;
 using Services.Abstractions;
 
@@ -8,19 +10,23 @@ namespace Presentation
     {
         private readonly IReportService _reportService;
         private readonly Timer _timer;
+        private readonly string _pathToCsvFolder;
+
 
         public PowerPositionReportService(IReportService reportService)
         {
+            InitializeComponent();
+            _pathToCsvFolder = ConfigurationManager.AppSettings["PathToCsvFolder"];
             _reportService = reportService;
             _timer = new Timer();
-            InitializeComponent();
         }
 
         protected override void OnStart(string[] args)
         {
             _timer.Elapsed += new ElapsedEventHandler(OnTimerTick);
-            _timer.Interval = 3600000;
+            _timer.Interval = Convert.ToDouble(ConfigurationManager.AppSettings["RuntimeFrequency"]);
             _timer.Enabled = true;
+            _reportService.GenerateReport(_pathToCsvFolder);
         }
 
         protected override void OnStop()
@@ -29,7 +35,7 @@ namespace Presentation
 
         private void OnTimerTick(object source, ElapsedEventArgs e)
         {
-            _reportService.GenerateReport();
+            _reportService.GenerateReport(_pathToCsvFolder);
         }
     }
 }
