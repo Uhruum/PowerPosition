@@ -14,6 +14,7 @@ namespace Tests
     {
         private readonly string _22Hours = "22:00";
         private readonly string _23Hours = "23:00";
+        private readonly string _pathToCsvFolder = @"E:\Reports";
 
         [TestMethod]
         public void GivenPowerServiceWhenGetTradesInvokedThenResultIsParsed()
@@ -49,8 +50,7 @@ namespace Tests
         {
             IReportService service = new ReportService(new PowerService(), new PowerTradeConverter(),
                 new TradeItemConverter(new PeriodMapper(new PeriodMapperCollectionGenerator())), new CsvGenerator());
-
-            service.GenerateReport("E:/Reports");
+            service.GenerateReport(_pathToCsvFolder);
         }
     }
 }

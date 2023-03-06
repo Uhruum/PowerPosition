@@ -1,5 +1,7 @@
 ﻿
+using System;
 using Autofac;
+using log4net;
 using Services;
 using Services.Abstractions;
 using Services.Implementations;
@@ -19,6 +21,7 @@ namespace Presentation
             containerBuilder.RegisterType<PowerService>().As<IPowerService>().InstancePerLifetimeScope();
             containerBuilder.RegisterType<CsvGenerator>().As<ICsvGenerator>().InstancePerLifetimeScope();
             containerBuilder.RegisterType<ReportService>().As<IReportService>().InstancePerLifetimeScope();
+            containerBuilder.Register(c => LogManager.GetLogger(typeof(Object))).As<ILog>();
         }
     }
 }
