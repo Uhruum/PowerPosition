@@ -1,22 +1,35 @@
 ﻿using System.ServiceProcess;
+using System.Timers;
+using Services.Abstractions;
 
 namespace Presentation
 {
     public partial class PowerPositionReportService : ServiceBase
     {
-        public PowerPositionReportService()
+        private readonly IReportService _reportService;
+        private readonly Timer _timer;
+
+        public PowerPositionReportService(IReportService reportService)
         {
+            _reportService = reportService;
+            _timer = new Timer();
             InitializeComponent();
         }
 
         protected override void OnStart(string[] args)
         {
-            // TODO: Add code here to start your service.
+            _timer.Elapsed += new ElapsedEventHandler(OnTimerTick);
+            _timer.Interval = 3600000;
+            _timer.Enabled = true;
         }
 
         protected override void OnStop()
         {
-            // TODO: Add code here to perform any tear-down necessary to stop your service.
+        }
+
+        private void OnTimerTick(object source, ElapsedEventArgs e)
+        {
+            _reportService.GenerateReport();
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Presentation
         static void Main()
         {
             ContainerBuilder containerBuilder = new ContainerBuilder();
-            ServiceCollection.AddContainerBuilder(containerBuilder);
+            containerBuilder.AddContainerBuilder();
             IContainer container = containerBuilder.Build();
             ServiceBase.Run(container.Resolve<PowerPositionReportService>());
         }
