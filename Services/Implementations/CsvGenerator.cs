@@ -23,9 +23,9 @@ namespace Services.Implementations
             string fileName = $"PowerPosition_{DateTime.Now:yyyyMMdd_HHmm}.csv";
             try
             {
-                if(_pathValidator.IsValid(path))
+                if(!_pathValidator.IsValid(path))
                     throw new ArgumentNullException(
-                        $"Error occurred when generating csv report with name {fileName} path not valid!");
+                        $"Error occurred when generating csv report with name {fileName} path not valid! Given path is {path}");
 
                 if (!Directory.Exists(path))
                     Directory.CreateDirectory(path);
