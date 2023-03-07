@@ -16,6 +16,10 @@ namespace Services.Implementations
             string fileName = $"PowerPosition_{DateTime.Now:yyyyMMdd_HHmm}.csv";
             try
             {
+                if(string.IsNullOrEmpty(path))
+                    throw new ArgumentNullException(
+                        $"Error occurred when generating csv report with name {fileName} path not specified!");
+
                 if (!Directory.Exists(path))
                     Directory.CreateDirectory(path);
 
