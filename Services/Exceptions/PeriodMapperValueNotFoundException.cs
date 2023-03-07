@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using Services.Abstractions;
 
 namespace Services.Exceptions
 {
+    /// <summary>
+    /// Thrown when trying to resolve period in <see cref="IPeriodMapper"/>
+    /// </summary>
     public class PeriodMapperValueNotFoundException : Exception
     {
         public PeriodMapperValueNotFoundException()

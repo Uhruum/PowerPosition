@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using Services.Abstractions;
 
 namespace Services.Exceptions
 {
+    /// <summary>
+    /// Thrown when general error occurres in <see cref="ICsvGenerator"/>
+    /// </summary>
     public class CsvGeneratorGeneralException : Exception
     {
         public CsvGeneratorGeneralException()
