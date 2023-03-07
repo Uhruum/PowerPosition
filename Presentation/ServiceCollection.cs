@@ -21,6 +21,8 @@ namespace Presentation
             containerBuilder.RegisterType<PowerService>().As<IPowerService>().InstancePerLifetimeScope();
             containerBuilder.RegisterType<CsvGenerator>().As<ICsvGenerator>().InstancePerLifetimeScope();
             containerBuilder.RegisterType<ReportService>().As<IReportService>().InstancePerLifetimeScope();
+            containerBuilder.RegisterType<NumberValidator>().As<INumberValidator>().InstancePerLifetimeScope();
+            containerBuilder.RegisterType<PathValidator>().As<IPathValidator>().InstancePerLifetimeScope();
             containerBuilder.Register(c => LogManager.GetLogger(typeof(Object))).As<ILog>();
         }
     }

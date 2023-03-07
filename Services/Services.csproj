@@ -75,6 +75,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstractions\ICsvGenerator.cs" />
+    <Compile Include="Abstractions\INumberValidator.cs" />
+    <Compile Include="Abstractions\IPathValidator.cs" />
     <Compile Include="Abstractions\IPeriodMapper.cs" />
     <Compile Include="Abstractions\IPeriodMapperCollectionGenerator.cs" />
     <Compile Include="Abstractions\IPowerTradeConverter.cs" />
@@ -83,6 +85,8 @@
     <Compile Include="Exceptions\CsvGeneratorGeneralException.cs" />
     <Compile Include="Exceptions\PeriodMapperValueNotFoundException.cs" />
     <Compile Include="Implementations\CsvGenerator.cs" />
+    <Compile Include="Implementations\NumberValidator.cs" />
+    <Compile Include="Implementations\PathValidator.cs" />
     <Compile Include="Implementations\PeriodMapper.cs" />
     <Compile Include="Implementations\PeriodMapperCollectionGenerator.cs" />
     <Compile Include="Implementations\PowerTradeConverter.cs" />
